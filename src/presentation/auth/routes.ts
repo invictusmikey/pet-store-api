@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AutController } from "./controller";
 
 export class AuthRoutes {
 
@@ -6,13 +7,12 @@ export class AuthRoutes {
 
         const router = Router();
 
-        router.post('/login', (req,res) => {
-            res.json({message: 'login'})
-        })
+        const controller = new AutController()
 
-        router.post('/register', (req,res) => {
-            res.json({message: 'register'})
-        })
+        router.post('/login', controller.loginUser)
+        
+
+        router.post('/register', controller.registerUser )
 
         return router
 
